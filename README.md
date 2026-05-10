@@ -36,3 +36,29 @@ cp .env.example .env
 docker compose --env-file .env build
 
 docker compose --env-file .env up -d
+
+## If the logs show an error related to zod/admin bundle...
+
+```text
+Could not resolve "zod/v4"
+Could not resolve "zod/v3"
+```
+
+docker exec -it thesis-clean-strapi sh -lc "npm install zod@3.25.76 --legacy-peer-deps"
+
+docker restart thesis-clean-strapi
+
+## How to build and start the docker compose after npm installation？
+docker compose --env-file .env build strapi
+
+docker compose --env-file .env up -d
+
+docker logs thesis-clean-strapi --tail 150
+
+## Open in chrome and check whether it works：
+
+http://localhost:1338/adminv
+
+http://localhost:5174/
+
+
