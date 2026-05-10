@@ -29,9 +29,13 @@ This repository contains the source code for a small-scale e-commerce admin-side
 
 ## Environment variable
 
-cp .env.example .env
+Copy the example environment file:
 
-## Project Structure
+```bash
+cp .env.example .env
+```
+
+## Build and Run
 
 docker compose --env-file .env build
 
