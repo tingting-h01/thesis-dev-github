@@ -26,6 +26,7 @@ This repository contains the source code for a small-scale e-commerce admin-side
     └── src/api/product/
 
 ## Steps
+
 cp .env.example .env
 docker compose --env-file .env build
 docker compose --env-file .env up -d
