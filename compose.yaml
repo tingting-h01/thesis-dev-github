@@ -1,0 +1,42 @@
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: thesis-clean-postgres
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - thesis-clean-postgres-data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+
+  strapi:
+    build:
+      context: ./backend
+    image: tingting37414/thesis-strapi:1.5
+    container_name: thesis-clean-strapi
+    env_file:
+      - .env
+    ports:
+      - "1338:1337"
+    depends_on:
+      - postgres
+
+  frontend:
+    build:
+      context: ./frontend
+    image: tingting37414/thesis-frontend:1.5
+    container_name: thesis-clean-frontend
+    ports:
+      - "5174:5173"
+    environment:
+      - VITE_API_URL=${VITE_API_URL}
+    depends_on:
+      - strapi
+
+volumes:
+  thesis-clean-postgres-data:
+  thesis-clean-strapi-node-modules:
+  thesis-clean-frontend-node-modules:
+  thesis-clean-strapi-uploads:
