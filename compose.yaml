@@ -13,7 +13,7 @@ services:
 
   strapi:
     build:
-      context: ./backend
+      context: ./strapi
     image: tingting37414/thesis-strapi:1.5
     container_name: thesis-clean-strapi
     env_file:
