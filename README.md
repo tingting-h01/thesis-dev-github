@@ -11,6 +11,7 @@ This repository contains the source code for a small-scale e-commerce admin-side
 
 ## Project Structure
 
+
 ```text
 .
 ├── compose.yaml
@@ -24,9 +25,14 @@ This repository contains the source code for a small-scale e-commerce admin-side
     ├── package.json
     ├── config/
     └── src/api/product/
+```
 
-## Steps
+## Environment variable
 
 cp .env.example .env
+
+## Project Structure
+
 docker compose --env-file .env build
+
 docker compose --env-file .env up -d
